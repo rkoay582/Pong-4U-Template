@@ -1,7 +1,7 @@
 ﻿/*
  * Description:     A basic PONG simulator
- * Author:           
- * Date:            
+ * Author:           Rie Koay Yang Xue
+ * Date:            04/02/2019
  */
 
 #region libraries
@@ -79,7 +79,7 @@ namespace Pong
                 case Keys.M:
                     mKeyDown = true;
                     break;
-                case Keys.Y:
+                case Keys.Y://if y or space is pressed then do space actions
                 case Keys.Space:
                     if (newGameOk)
                     {
@@ -116,6 +116,8 @@ namespace Pong
             }
         }
 
+       
+
         /// <summary>
         /// sets the ball and paddle positions for game start
         /// </summary>
@@ -137,16 +139,18 @@ namespace Pong
 
             //p1 starting position
             p1.X = PADDLE_EDGE;
-            p1.Y = this.Height / 2 - p1.Height / 2;
+            p1.Y = this.Height / 2 - p1.Height / 2; //centre on screen
 
             //p2 starting position
             p2.X = this.Width - PADDLE_EDGE - p2.Width;
             p2.Y = this.Height / 2 - p2.Height / 2;
 
-            // TODO set Width and Height of ball
+            // Set Width and Height of ball
+            ball.Height = ball.Width = 10;
             // TODO set starting X position for ball to middle of screen, (use this.Width and ball.Width)
+            ball.X = this.Width / 2 - ball.Width / 2;
             // TODO set starting Y position for ball to middle of screen, (use this.Height and ball.Height)
-
+            ball.Y = this.Height / 2 - ball.Height / 2;
         }
 
         /// <summary>
@@ -158,7 +162,10 @@ namespace Pong
             #region update ball position
 
             // TODO create code to move ball either left or right based on ballMoveRight and using BALL_SPEED
-
+            if (ballMoveRight == true)
+            {
+                
+            }
             // TODO create code move ball either down or up based on ballMoveDown and using BALL_SPEED
 
             #endregion
@@ -250,7 +257,7 @@ namespace Pong
             // TODO draw paddles using FillRectangle
 
             // TODO draw ball using FillRectangle
-
+            e.Graphics.FillEllipse(drawBrush, ball);
             // TODO draw scores to the screen using DrawString
         }
 
